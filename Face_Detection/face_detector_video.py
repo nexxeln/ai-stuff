@@ -12,6 +12,11 @@ while True:
     # reading the current frame 
     successful_frame_read, frame = webcam.read()
 
+    # terminating the program if something goes wrong
+    if not successful_frame_read:
+        print("Something went wrong")
+        break
+
     # converting the image to grayscale
     grayscaled_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
@@ -20,7 +25,7 @@ while True:
 
     # drawing rectangles around all the faces
     for (x, y, w, h) in face_coordinates:
-        cv2.rectangle(frame, (x,y), (x+w, y+h), (randrange(256), randrange(256), randrange(256)), 2)       # (0, 256, 0), 2 => green colour for the rectangle with thickness of 2
+        cv2.rectangle(frame, (x,y), (x+w, y+h), (randrange(256), randrange(256), randrange(256)), 2)       # (randrange(256), randrange(256), randrange(256)), 2 => random colour for the rectangle with thickness of 2
 
     # showing the webcam
     cv2.imshow("Face Detector", frame)
@@ -32,5 +37,4 @@ while True:
     
 # releasing the VideoCapture object
 webcam.release()
-
-print("Code completed")
+cv2.destroyAllWindows()

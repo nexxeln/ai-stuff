@@ -15,10 +15,9 @@ face_coordinates = trained_face_data.detectMultiScale(grayscaled_img)       # co
 
 # drawing rectangles around all the faces
 for (x, y, w, h) in face_coordinates:
-    cv2.rectangle(img, (x,y), (x+w, y+h), (randrange(256), randrange(256), randrange(256)), 2)       # (0, 256, 0), 2 => green colour for the rectangle with thickness of 2
+    cv2.rectangle(img, (x,y), (x+w, y+h), (randrange(256), randrange(256), randrange(256)), 2)       # (randrange(256), randrange(256), randrange(256)), 2 => random colour for the rectangle with thickness of 2
 
 # showing the image
 cv2.imshow("Face Detector", img)
 cv2.waitKey()
 
-print("Code completed")
